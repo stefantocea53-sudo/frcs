@@ -57,7 +57,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    .device-gate {
+    .age-gate {
       position: fixed;
       inset: 0;
       z-index: 999;
@@ -66,13 +66,21 @@
       padding: 22px;
       background:
         radial-gradient(circle at top, rgba(57,255,136,.34), transparent 38%),
-        rgba(2,5,3,.98);
+        rgba(2,5,3,.97);
+      transition: .25s ease;
     }
 
-    .device-box {
+    .age-gate.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(1.03);
+    }
+
+    .age-box {
       width: 100%;
-      max-width: 390px;
-      padding: 30px 20px 22px;
+      max-width: 360px;
+      padding: 26px 20px 20px;
       text-align: center;
       border-radius: 32px;
       background: linear-gradient(180deg, rgba(20,38,27,.96), rgba(6,12,8,.98));
@@ -80,116 +88,66 @@
       box-shadow: var(--shadow);
     }
 
-    .device-badge {
-      width: fit-content;
+    .age-icon {
+      width: 76px;
+      height: 76px;
+      border-radius: 24px;
       margin: 0 auto 18px;
-      padding: 9px 13px;
-      border-radius: 999px;
-      color: #baffd0;
-      background: rgba(57,255,136,.12);
-      border: 1px solid rgba(57,255,136,.30);
-      font-size: 12px;
-      font-weight: 1000;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .device-box h2 {
-      font-size: clamp(36px, 11vw, 48px);
-      line-height: .95;
-      letter-spacing: -.06em;
-      margin-bottom: 12px;
-    }
-
-    .device-box > p {
-      max-width: 300px;
-      margin: 0 auto 22px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .device-actions {
-      display: grid;
-      gap: 12px;
-    }
-
-    .device-button {
-      width: 100%;
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 14px;
-      padding: 12px 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      color: #f5fff7;
-      background: rgba(255,255,255,.06);
-      cursor: pointer;
-      text-align: left;
-      transition: transform .16s ease, border-color .16s ease, background .16s ease;
-    }
-
-    .device-button:hover,
-    .device-button:focus-visible {
-      transform: translateY(-2px);
-      border-color: rgba(57,255,136,.55);
-      background: rgba(57,255,136,.10);
-      outline: none;
-    }
-
-    .device-icon {
-      width: 46px;
-      height: 46px;
-      flex: 0 0 46px;
       display: grid;
       place-items: center;
-      border-radius: 15px;
+      color: #031108;
+      font-size: 28px;
+      font-weight: 1000;
+      background: linear-gradient(180deg, #67ffa3, #20d66b);
+      box-shadow: 0 16px 36px rgba(57,255,136,.28);
+    }
+
+    .age-box h2 {
+      font-size: 42px;
+      line-height: .9;
+      letter-spacing: -.06em;
+      margin-bottom: 10px;
+    }
+
+    .age-box p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      margin-bottom: 18px;
+    }
+
+    .age-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .age-actions button {
+      border: 0;
+      min-height: 56px;
+      border-radius: 18px;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .yes {
       color: #031108;
       background: linear-gradient(180deg, #67ffa3, #20d66b);
-      font-size: 24px;
-      font-weight: 1000;
-      box-shadow: 0 12px 28px rgba(32,214,107,.20);
+      box-shadow: 0 16px 30px rgba(32,214,107,.24);
     }
 
-    .device-icon svg,
-    .chip-device-icon {
-      width: 24px;
-      height: 24px;
-      display: block;
-      fill: currentColor;
-      flex: 0 0 auto;
+    .no {
+      color: #e8f3eb;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.10);
     }
 
-    .chip-device-icon {
-      width: 17px;
-      height: 17px;
-    }
-
-    .device-button strong {
-      display: block;
-      font-size: 17px;
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-
-    .device-button small {
-      display: block;
-      color: #aebfb2;
+    .deny {
+      display: none;
+      margin-top: 12px;
+      color: #ffc0c7;
       font-size: 12px;
-      font-weight: 700;
-    }
-
-    .device-note {
-      margin-top: 16px;
-      color: #718477;
-      font-size: 11px;
-      line-height: 1.45;
-    }
-
-    #appRoot {
-      min-height: 100vh;
+      font-weight: 800;
     }
 
     .page {
@@ -226,13 +184,6 @@
       border-radius: 12px;
       object-fit: cover;
       background: rgba(255,255,255,.08);
-    }
-
-    .brand-combo span {
-      color: var(--green);
-      font-size: 18px;
-      font-weight: 1000;
-      line-height: 1;
     }
 
     .hero {
@@ -385,7 +336,7 @@
     }
 
     .tip-card {
-      margin: 4px 0 20px;
+      margin-top: 18px;
       padding: 24px 22px 19px;
       border-radius: 28px;
       background:
@@ -574,18 +525,30 @@
   </style>
 </head>
 
-<body>
+<body class="lock">
 
-  <div id="appRoot"></div>
+  <div class="age-gate" id="ageGate">
+    <div class="age-box">
+      <div class="age-icon">21+</div>
+      <h2>Are you 21 or older?</h2>
+      <p>This page is restricted to visitors aged 21 or older.</p>
 
-  <template id="mainPageTemplate">
-<main class="page">
+      <div class="age-actions">
+        <button class="yes" id="yesBtn">Yes, I’m 21 or older</button>
+        <button class="no" id="noBtn">No, I’m younger</button>
+      </div>
+
+      <div class="deny" id="denyMsg">
+        Sorry, you can’t view this page.
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
 
     <header class="top">
       <div class="brand-combo">
         <img src="assets/freecash-logo.webp" alt="Freecash">
-        <span>×</span>
-        <img src="assets/tiktok-logo.webp" alt="TikTok">
       </div>
     </header>
 
@@ -600,15 +563,7 @@
         Turn your screen time into real rewards with Freecash.
       </p>
 
-      <div class="tip-card">
-        <div class="tip-label">⚡ Pro tip</div>
-        <h2>Unlock <span>higher payouts</span></h2>
-        <p>Complete 2 to 3 starter offers to access better rewards and earn even more.</p>
-        <div class="rainbow"></div>
-      </div>
-
       <div class="chips">
-        <div class="chip" id="deviceChip">📱 Your device</div>
         <div class="chip">⚡ Fast payout</div>
         <div class="chip">🔒 Secure account</div>
         <div class="chip">🎁 Daily bonuses</div>
@@ -627,6 +582,12 @@
         <div class="rating"><i>★</i> 5.0</div>
       </div>
 
+      <div class="tip-card">
+        <div class="tip-label">⚡ Pro tip</div>
+        <h2>Unlock <span>higher payouts</span></h2>
+        <p>Complete 2 to 3 starter offers to access better rewards and earn even more.</p>
+        <div class="rainbow"></div>
+      </div>
     </section>
 
     <div class="section-title">How it works</div>
@@ -676,7 +637,7 @@
   <div class="sticky">
     <a
       class="cta"
-      href="https://raintrkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNDM1YWY5Y2Y2OGRlZGU5Y2EyNWMiLCJ0cyI6MTc4MzY4NTYwMjI5N30?s1=snus&feb=1"
+      href="https://raintrkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNDM1YWY5Y2Y2OGRlZGU5Y2EyNWMiLCJ0cyI6MTc4MjgxNzEzNjE0OH0?s1=snus&feb=1"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -686,58 +647,43 @@
       </span>
     </a>
   </div>
-  </template>
 
   <script>
-    const appRoot = document.getElementById("appRoot");
-    const mainPageTemplate = document.getElementById("mainPageTemplate");
+    const ageGate = document.getElementById("ageGate");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const denyMsg = document.getElementById("denyMsg");
 
-    function detectDevice() {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      return /iPad|iPhone|iPod/i.test(userAgent) ? "ios" : "android";
+    yesBtn.addEventListener("click", function () {
+      ageGate.classList.add("hide");
+      document.body.classList.remove("lock");
+      localStorage.setItem("age21", "yes");
+    });
+
+    noBtn.addEventListener("click", function () {
+      denyMsg.style.display = "block";
+    });
+
+    if (localStorage.getItem("age21") === "yes") {
+      ageGate.classList.add("hide");
+      document.body.classList.remove("lock");
     }
 
-    function appendTrackingParameters(selectedDevice) {
-      const currentParams = new URLSearchParams(window.location.search);
+    document.addEventListener("DOMContentLoaded", function () {
+      const query = window.location.search;
 
-      document.querySelectorAll("#appRoot a[href^='http']").forEach(function (link) {
-        const url = new URL(link.href);
+      if (!query) return;
 
-        currentParams.forEach(function (value, key) {
-          if (!url.searchParams.has(key)) {
-            url.searchParams.set(key, value);
-          }
-        });
+      document.querySelectorAll("a[href^='http']").forEach(function (link) {
+        const href = link.getAttribute("href");
 
-        url.searchParams.set("device", selectedDevice);
-        link.href = url.toString();
-      });
-    }
-
-    function loadMainPage() {
-      const selectedDevice = detectDevice();
-
-      appRoot.appendChild(mainPageTemplate.content.cloneNode(true));
-
-      const deviceChip = document.getElementById("deviceChip");
-      if (deviceChip) {
-        if (selectedDevice === "ios") {
-          deviceChip.innerHTML = `
-            <svg class="chip-device-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-              <path d="M42.8 33.7c-.1-7 5.7-10.4 6-10.6-3.3-4.8-8.4-5.5-10.2-5.6-4.3-.4-8.4 2.6-10.6 2.6-2.3 0-5.7-2.6-9.4-2.5-4.8.1-9.3 2.8-11.8 7.1-5.1 8.8-1.3 21.8 3.6 28.9 2.4 3.5 5.3 7.4 9.1 7.2 3.7-.1 5.1-2.3 9.5-2.3 4.4 0 5.7 2.3 9.5 2.2 3.9-.1 6.4-3.5 8.8-7 2.8-4 3.9-7.9 4-8.1-.1 0-8.4-3.2-8.5-11.9Z"/>
-              <path d="M35.8 12.9c2-2.4 3.4-5.8 3-9.2-2.9.1-6.5 2-8.6 4.4-1.9 2.1-3.5 5.6-3.1 8.9 3.3.2 6.7-1.6 8.7-4.1Z"/>
-            </svg>
-            <span>iPhone / iOS</span>`;
+        if (href.includes("?")) {
+          link.setAttribute("href", href + query.replace("?", "&"));
         } else {
-          deviceChip.innerHTML = '<span aria-hidden="true">🤖</span><span>Android</span>';
+          link.setAttribute("href", href + query);
         }
-      }
-
-      appendTrackingParameters(selectedDevice);
-      window.scrollTo(0, 0);
-    }
-
-    loadMainPage();
+      });
+    });
   </script>
 
 </body>
